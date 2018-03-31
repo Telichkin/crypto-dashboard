@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard {
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  padding: 20px;
+}
+.dashboard__title {
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 1.5em;
+}
+.dashboard__description {
+  font-size: 1.2em;
+}
+.dashboard__exchange {
+  display: inline-block;
+  position: relative;
+}
+.dashboard__echange-name {
+  border-bottom: 1px dashed #000;
+}
+.dashboard__echange-name:hover {
+  cursor: pointer;
+}
+.dashboard__exchange-rate {
+  background: linear-gradient(-100deg, rgba(250,247,133,0.3), rgba(250,247,133,0.7) 95%, rgba(250,247,133,0.1));
+}
+.available-exchanges {
+  position: absolute;
+}
+.available-exchanges__list {
+  display: block;
+  position: relative;
+  list-style-type: none;
+  border: 1px solid #d1d5da;
+  border-radius: 2px;
+  max-height: 170px;
+  overflow-y: scroll;
+  background: #fff;
+  margin-top: 5px;
+}
+.available-exchanges__item {
+  padding: 5px;
+}
+.available-exchanges__item:hover {
+  cursor: pointer;
+  background: #eaecef;
+}
