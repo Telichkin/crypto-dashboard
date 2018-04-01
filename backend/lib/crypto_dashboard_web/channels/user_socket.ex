@@ -2,7 +2,7 @@ defmodule CryptoDashboardWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", CryptoDashboardWeb.RoomChannel
+  channel "exchange_rates", CryptoDashboardWeb.ExchangeRates
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

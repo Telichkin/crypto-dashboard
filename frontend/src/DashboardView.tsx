@@ -49,7 +49,7 @@ export default class extends React.Component<{ model: Dashboard }, {}> {
         return (
             <div className="available-exchanges">
                 <ul className="available-exchanges__list">
-                    {Object.keys(model.exchanges).map((exchangeName: string) => (
+                    {model.exchangesNames.map((exchangeName: string) => (
                         <li 
                             className="available-exchanges__item"
                             key={exchangeName}

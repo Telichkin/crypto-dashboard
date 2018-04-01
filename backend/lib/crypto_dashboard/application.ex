@@ -6,12 +6,9 @@ defmodule CryptoDashboard.Application do
   def start(_type, _args) do
     import Supervisor.Spec
 
-    # Define workers and child supervisors to be supervised
     children = [
-      # Start the endpoint when the application starts
-      supervisor(CryptoDashboardWeb.Endpoint, []),
-      # Start your own worker by calling: CryptoDashboard.Worker.start_link(arg1, arg2, arg3)
-      # worker(CryptoDashboard.Worker, [arg1, arg2, arg3]),
+      worker(CryptoDashboard.ExchangeRatesStorage, []),
+      supervisor(CryptoDashboardWeb.Endpoint, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

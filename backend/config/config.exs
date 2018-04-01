@@ -9,7 +9,6 @@ use Mix.Config
 config :crypto_dashboard, CryptoDashboardWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "kN3TYbp4QyBhTBAeTku9cAjzrc0Wwhyo+fx99+POqxHa/p/gIUz7C5qDf9TAW4y8",
-  render_errors: [view: CryptoDashboardWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: CryptoDashboard.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
