@@ -8,12 +8,12 @@
     "watch:ts": "onchange './src/**/*.ts' './src/**/*.tsx' -- npm run build:ts",
     "build:stylus": "stylus ./src/styles/main.styl -o ./dist/css/app.css",
     "watch:stylus": "onchange './src/**/*.styl' -- npm run build:stylus",
-    "copy:html": "cp ./src/main.html ./dist/main.html",
+    "copy:html": "cp ./src/main.html ./dist/index.html",
     "watch:html": "onchange './src/main.html' -- npm run copy:html",
     "build": "npm run clean && npm run copy:html && npm run build:ts && npm run build:stylus",
     "prewatch": "npm run build",
     "watch": "parallelshell 'npm run watch:html' 'npm run watch:ts' 'npm run watch:stylus'",
-    "serve": "live-server --port=9090 --no-browser --entry-file=main.html ./dist"
+    "serve": "live-server --port=9090 --no-browser --entry-file=index.html ./dist"
   },
   "devDependencies": {
     "@types/react": "^16.0.38",

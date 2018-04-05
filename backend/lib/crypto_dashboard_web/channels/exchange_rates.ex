@@ -1,5 +1,6 @@
 defmodule CryptoDashboardWeb.ExchangeRates do
   use Phoenix.Channel
+  intercept ["exchange_rates"]
 
   def join("exchange_rates", _message, socket) do
     Phoenix.PubSub.subscribe(CryptoDashboard.PubSub, "exchange_rates")
