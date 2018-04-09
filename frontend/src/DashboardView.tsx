@@ -39,6 +39,7 @@ export default class extends React.Component<{ model: Dashboard }, {}> {
                     {model.exchangesIsOpened && this.renderExchanges()}
                 </div>
                 {" is "}<span className="dashboard__exchange-rate">{`${model.currentExchangeRate} for 1 ETH`}</span>
+                {model.exchangesIsOpened && this.renderHandlerForOutsideClick()}
             </div>  
         )
     }
@@ -59,6 +60,18 @@ export default class extends React.Component<{ model: Dashboard }, {}> {
                         </li>
                     ))}
                 </ul> 
+            </div>
+        )
+    }
+
+    renderHandlerForOutsideClick() {
+        const model = this.props.model;
+
+        return (
+            <div 
+                className="handler-for-outside-click"
+                onClick={model.toggleExchangesList}
+            >
             </div>
         )
     }

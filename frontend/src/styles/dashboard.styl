@@ -35,12 +35,20 @@
     max-height: 170px
     overflow-y: scroll
     background: white
-
-    // move to other class
     margin-top: 5px
+    z-index: 3
 
 .available-exchanges__item
     padding: 5px    
     &:hover
         cursor: pointer
-        background: #eaecef    
+        background: #eaecef  
+
+.handler-for-outside-click
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 2
+    height: 100%
+    width: 100%
+    opacity: 0  
