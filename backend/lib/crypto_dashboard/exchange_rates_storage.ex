@@ -3,6 +3,7 @@ defmodule CryptoDashboard.ExchangeRatesStorage do
   alias CryptoDashboard.CryptoCompareClient, as: Client
 
   @server ExchangeRatesStorage
+  @update_interval 1000 * 60
 
   def start_link do
     GenServer.start_link(__MODULE__, %{}, [name: @server])
@@ -15,8 +16,7 @@ defmodule CryptoDashboard.ExchangeRatesStorage do
   def init(%{}) do
     send(self(), :init)
 
-    minute = 1000 * 60
-    timer_ref = :erlang.send_after(minute, self(), :update_exchange_rates)
+    timer_ref = :erlang.send_after(@update_interval, self(), :update_exchange_rates)
     {:ok, %{timer_ref: timer_ref, exchange_rates: %{}}}
   end
 
@@ -30,11 +30,10 @@ defmodule CryptoDashboard.ExchangeRatesStorage do
   def handle_info(:update_exchange_rates, %{timer_ref: t}) do
     :erlang.cancel_timer(t)
 
-    minute = 1000 * 60
-    timer_ref = :erlang.send_after(minute, self(), :update_exchange_rates)
+    timer_ref = :erlang.send_after(@update_interval, self(), :update_exchange_rates)
     exchange_rates = Client.exchange_rates()
 
-    Phoenix.PubSub.broadcast(CryptoDashboard.PubSub, "exchange_rates", {:exchange_rates_updated, exchange_rates})
+    CryptoDashboardWeb.Endpoint.broadcast("exchange_rates", "exchange_rates", exchange_rates)
     {:noreply, %{timer_ref: timer_ref, exchange_rates: exchange_rates}}
   end
 end
