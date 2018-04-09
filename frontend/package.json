@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Frontend for Crypto Dashboard Project",
   "scripts": {
-    "clean": "mkdir dist ; rimraf dist/* && mkdir dist/css",
-    "build:ts": "browserify ./src/main.tsx -p [ tsify ] -t envify -o ./dist/js/app.js",
+    "clean": "mkdir dist ; rimraf dist/* && mkdir dist/css && mkdir dist/js",
+    "build:ts": "browserify ./src/main.tsx -p [ tsify ] -t envify -t uglifyify | uglifyjs --compress --mangle > ./dist/js/app.js",
     "watch:ts": "onchange './src/**/*.ts' './src/**/*.tsx' -- npm run build:ts",
     "build:stylus": "stylus ./src/styles/main.styl -o ./dist/css/app.css",
     "watch:stylus": "onchange './src/**/*.styl' -- npm run build:stylus",
@@ -27,11 +27,12 @@
     "stylus": "^0.54.5",
     "tsc": "^1.20150623.0",
     "tsify": "^3.0.4",
-    "uglify-js": "^3.3.11"
+    "envify": "^4.1.0",
+    "uglify-js": "^3.3.11",
+    "uglifyify": "^4.0.5"
   },
   "dependencies": {
     "@types/phoenix": "0.0.4",
-    "envify": "^4.1.0",
     "mobx": "^4.1.1",
     "mobx-react": "^5.0.0",
     "phoenix": "^1.3.0",

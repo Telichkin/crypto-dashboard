@@ -5,8 +5,11 @@ ARG BACKEND_PORT
 
 WORKDIR /build
 COPY . .
-RUN npm i && \
-    npm run build
+RUN npm i
+
+ARG NODE_ENV
+
+RUN npm run build
 RUN cp -r /build/dist/ /export
 
 

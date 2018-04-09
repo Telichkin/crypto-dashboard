@@ -14,5 +14,6 @@ services:
       args:
         BACKEND_PORT: "3000"
         BACKEND_HOST: "localhost"
+        NODE_ENV: "production"
     ports:
       - "8000:80"
