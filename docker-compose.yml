@@ -7,8 +7,12 @@ services:
       APP_PORT: "4000"
       APP_HOST: "localhost"
     ports: 
-      - "4000:4000"
+      - "3000:4000"
   frontend:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      args:
+        BACKEND_PORT: "3000"
+        BACKEND_HOST: "localhost"
     ports:
       - "8000:80"

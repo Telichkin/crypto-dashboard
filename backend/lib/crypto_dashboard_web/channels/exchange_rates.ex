@@ -9,7 +9,7 @@ defmodule CryptoDashboardWeb.ExchangeRates do
   end
 
   def handle_info({:exchange_rates_updated, new_exchange_rates}, socket) do
-    broadcast! socket, "exchange_rates", new_exchange_rates
+    broadcast!(socket, "exchange_rates", new_exchange_rates)
     {:noreply, socket}
   end
 

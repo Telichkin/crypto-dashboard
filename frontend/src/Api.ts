@@ -7,11 +7,13 @@ export interface SubscribtionCallbacks {
 }
 
 export default class {
-    constructor() {
-    }
+    private host?: string = process.env.BACKEND_HOST || "localhost";
+    private port?: string = process.env.BACKEND_PORT || "4000";
+
+    constructor() { }
 
     subscribe(callbacks: SubscribtionCallbacks) {
-        const socket = new Socket("ws://localhost:4000/socket");
+        const socket = new Socket(`ws://${this.host}:${this.port}/socket`);
         socket.connect();
 
         const channel = socket.channel("exchange_rates");

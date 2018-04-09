@@ -1,5 +1,8 @@
 FROM node:9.10 as build
 
+ARG BACKEND_HOST
+ARG BACKEND_PORT
+
 WORKDIR /build
 COPY . .
 RUN npm i && \

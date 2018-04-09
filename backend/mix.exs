@@ -32,6 +32,7 @@ defmodule CryptoDashboard.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:distillery, "~> 1.5", runtime: false},
       {:httpoison, "~> 1.0"},
       {:phoenix, "~> 1.3.0"},
       {:phoenix_pubsub, "~> 1.0"},
